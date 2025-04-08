@@ -29,8 +29,8 @@ from collections.abc import async_generator
 # print(b)
 # print(c)
 
-_first_name = "admin"
-print(_first_name)
+# _first_name = "admin"
+# print(_first_name)
 
 
 # import keyword
@@ -59,4 +59,43 @@ print(_first_name)
 
 # Принцип Исключения!!!!!!!!!!
 
+# import os
+#
+# import os.path
 
+# print(os.path.split(r"C:\Users\GanlucaGotti\Desktop\JS\H_10\task\text5.txt"))
+#
+# print(os.path.join(r"C:\Users", "GanlucaGotti", "Desktop", "JS", "H_10" "task", "text5.txt"))
+
+import os
+
+dirs = [r"Work\F1", r"Work\F2\F21"]
+# for d in dirs:
+#     os.makedirs(d)
+
+files = {
+    "Work": ["w.txt"],
+    r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
+    r"Work\F2\F21": ["f211.txt", "f212.txt"]
+}
+
+for d, files in files.items():
+    for file in files:
+        file_path = os.path.join(d, file)
+        open(file_path, "w").close()
+
+file_width_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt", r"Work\F2\F21\f212.txt"]
+
+for file in file_width_text:
+    with open(file, "w", encoding="utf-8") as f:
+        f.write(f"Какой-то текст в файле {file}")
+
+def print_tree(root, topdown):
+    print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
+    for root, directory, file_name in os.walk(root, topdown):
+        print(root)
+        print(directory)
+        print(file_name)
+    print("-" * 50)
+print_tree("Work", False)
+print_tree("Work", True)
