@@ -102,3 +102,4 @@ from collections.abc import async_generator
 
 
 print("Текст")
+
